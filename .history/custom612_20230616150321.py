@@ -300,7 +300,7 @@ while True:
                             # print the direction of movement of each object
                             print(d2, objectID, xmin, ymin, xmax, ymax,
                                   v[0], time.ctime(), flush=True)
-                        # go2Recordsというファイルに入庫、出庫の記録を残す
+        # go2Recordsというファイルに入庫、出庫の記録を残す
                             with open('go2Records.txt', 'a', encoding='utf-8') as f1:
                                 print(d2, objectID, xmin, ymin, xmax, ymax,
                                       v[0], time.ctime(), file=f1)
