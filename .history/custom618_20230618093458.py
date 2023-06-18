@@ -1,6 +1,6 @@
 import argparse
 import importlib.util
-# 935 print6180750 packages
+# 801 print6180750 packages
 import os
 import sys
 import time
@@ -295,10 +295,6 @@ while True:
                         min_key = min(d1.keys())
                         print(d1[min_key], objectID, xmin, ymin, xmax,
                               ymax, v[0], time.ctime(), flush=True)
-                    else:
-                        print(d1[0], objectID, xmin, ymin, xmax,
-                              ymax, v[0], time.ctime(), flush=True)
-
         # room2
         if ymax > 1000 and xmax < 1000:
             d2 = {}
@@ -310,13 +306,9 @@ while True:
                     d2[k] = "ROOM2IN"
                     incount = incount + 1
                 if bool(d2):
-                    # Output only the youngest number
-                    if len(d2) > 1:
+                    if len(d1) > 1:
                         min_key = min(d1.keys())
-                        print(d2[min_key], objectID, xmin, ymin, xmax,
-                              ymax, v[0], time.ctime(), flush=True)
-                    else:
-                        print(d2[0], objectID, xmin, ymin, xmax,
+                        print(d1[min_key], objectID, xmin, ymin, xmax,
                               ymax, v[0], time.ctime(), flush=True)
     # Press 'q' to quit and give the total tally
     if cv2.waitKey(1) == ord('q'):
