@@ -263,29 +263,11 @@ while True:
     if obsFrames % 1 == 0:
       # room1
       if ymax <= 1000 and xmax < 1000 and xmin > 525:
-        d1 = {}
-        for k,v in x.items():
-            if v[0] > 15: 
-                d1[k] =  "ROOM1OUT"
-                outcount = outcount + 1 
-            elif v[0]< -15:
-                d1[k] =  "ROOM1IN"
-                incount = incount + 1 
-            if bool(d1):
-                print(d1, time.ctime()) # prints the direction of travel (if any) and timestamp
-    
+      #objectのrectanglesの座標をプリントする
+        print('room1:', xmin, xmax, ymin, ymax, time.ctime())  
       # room2
       if ymax > 1000 and xmax < 1000:
-        d2 = {}
-        for k,v in x.items():
-          if v[0] > 25: 
-            d2[k] =  "ROOM2OUT"
-            outcount = outcount + 1
-          elif v[0]< -25:
-            d2[k] =  "ROOM2IN"
-            incount = incount + 1
-          if bool(d2):
-            print(d2, time.ctime()) # prints the direction of travel (if any) and timestamp
+        print('room2:', xmin, xmax, ymin, ymax, time.ctime())
         
 
     # Press 'q' to quit and give the total tally
