@@ -4,8 +4,6 @@ import time
 # 1412
 import cv2
 
-import custom618
-
 last_size = 0
 in_set = set()
 out_set = set()
