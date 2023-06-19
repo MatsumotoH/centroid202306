@@ -1,6 +1,6 @@
 import argparse
 import importlib.util
-# 854 packages
+# 845 packages
 import os
 import sys
 import time
@@ -303,7 +303,7 @@ while True:
 
             # go2Records2.txtに,dという辞書の中の各要素をループ処理をさせvalue変数には辞書の値が代入され、if文とelif文でテキストに 'OUT' や 'IN' が含まれているかを判定。outというテキストがある場合'OUT' 、inというテキストがある場合 'IN' をプリント
             with open('go2Records2.txt', 'a', encoding='utf-8') as f2:
-                for key, value in d1.items():
+                for key, value in d.items():
                     if 'OUT' in value:
                         print("OUT", file=f2)
                     elif 'IN' in value:
