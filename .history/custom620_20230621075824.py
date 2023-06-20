@@ -301,10 +301,8 @@ while True:
                 with open('go2Records.txt', 'a', encoding='utf-8') as f1:
                     print(d1, objectID, xmin, ymin, xmax, ymax,
                           v[0], time.ctime(), file=f1)
+
             # go2Records2.txtに,dという辞書の中の各要素をループ処理をさせvalue変数には辞書の値が代入され、if文とelif文でテキストに 'OUT' や 'IN' が含まれているかを判定。outというテキストがある場合'OUT' 、inというテキストがある場合 'IN' をプリント
-            with open('go2Records.txt', 'a', encoding='utf-8') as f1:
-                print(d1, objectID, xmin, ymin, xmax, ymax,
-                      v[0], time.ctime(), file=f1)
             with open('go2Records2.txt', 'a', encoding='utf-8') as f2:
                 for key, value in d1.items():
                     if 'OUT' in value:
@@ -324,10 +322,7 @@ while True:
                 # print the direction of movement of each object
                 print(d2, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
-                with open('go2Records.txt', 'a', encoding='utf-8') as f1:
-                    print(d2, objectID, xmin, ymin, xmax, ymax,
-                          v[0], time.ctime(), file=f1)
-            # go2Recordsというファイルに入庫、出庫の記録を残す
+    # go2Recordsというファイルに入庫、出庫の記録を残す
             with open('go2Records.txt', 'a', encoding='utf-8') as f1:
                 print(d2, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), file=f1)
@@ -336,10 +331,9 @@ while True:
                     if 'OUT' in value:
                         print("OUT", file=f2)
                     elif 'IN' in value:
-                        print("IN", file=f2)
 
-            # Press 'q' to quit and give the total tally
-            if cv2.waitKey(1) == ord('q'):
+    # Press 'q' to quit and give the total tally
+                      if cv2.waitKey(1) == ord('q'):
                         print("出庫", outcount, "Right", incount)
                         break
 
