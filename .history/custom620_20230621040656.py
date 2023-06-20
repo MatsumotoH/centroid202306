@@ -295,6 +295,9 @@ while True:
                     d1[k] = "ROOM1OUT"
                 elif v[0] < -8:
                     d1[k] = "ROOM1IN"
+                if bool(d1):
+                    # prints the direction of travel (if any) and timestamp
+                    print(d1, time.ctime())
             if bool(d1):
                 print(d1, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
@@ -310,6 +313,8 @@ while True:
                     elif 'IN' in value:
                         print("IN", file=f2)
 
+            with open('go2Records3.txt', 'a', encoding='utf-8') as f3:
+                print(d1)
         # room2
         if ymax > 1000 and xmax < 1000:
             d2 = {}
@@ -318,6 +323,9 @@ while True:
                     d2[k] = "ROOM2OUT"
                 elif v[0] < -25:
                     d2[k] = "ROOM2IN"
+                if bool(d2):
+                    # prints the direction of travel (if any) and timestamp
+                    print(d2, time.ctime())
             if bool(d2):
                 # print the direction of movement of each object
                 print(d2, objectID, xmin, ymin, xmax, ymax,
@@ -331,6 +339,10 @@ while True:
                     if 'OUT' in value:
                         print("OUT", file=f2)
                     elif 'IN' in value:
+                        print("IN", file=f2)
+
+            with open('go2Records3.txt', 'a', encoding='utf-8') as f3:
+                print(d2)
 
     # Press 'q' to quit and give the total tally
     if cv2.waitKey(1) == ord('q'):
