@@ -1,6 +1,6 @@
 import argparse
 import importlib.util
-# 918 packages
+# 858 packages
 import os
 import sys
 import time
@@ -273,7 +273,7 @@ while True:
     # Draw framerate in corner of frame
     cv2.putText(frame, 'FPS: {0:.2f}'.format(frame_rate_calc), (1700, 50),
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 0), 2, cv2.LINE_AA)
-    frame2 = cv2.resize(frame, (960, 540))
+    frame2 = cv2.resize(frame, (640, 360))
     # All the results have been drawn on the frame, so it's time to display it.
     cv2.imshow('GO2 car detector', frame2)
 

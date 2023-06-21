@@ -1,7 +1,7 @@
 import os
 import time
 
-# 854
+# 1412
 import cv2
 
 last_size = 0
