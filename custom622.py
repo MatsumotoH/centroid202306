@@ -164,6 +164,8 @@ time.sleep(1)
 outcount = 0
 incount = 0 
 obsFrames = 0
+max_in_count = {}
+max_out_count = {}
 
 #for frame1 in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):
 while True:
@@ -270,26 +272,20 @@ while True:
                     d1[k] = "ROOM1OUT"
                 elif v[0] < -8:
                     d1[k] = "ROOM1IN"
-                if bool(d1):
-                    # prints the direction of travel (if any) and timestamp
-                    print(d1, time.ctime())
             if bool(d1):
                 print(d1, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
-                with open('go2Records.txt', 'a', encoding='utf-8') as f1:
-                    print(d1, objectID, xmin, ymin, xmax, ymax,
-                          v[0], time.ctime(), file=f1)
+                for line in d1.items():
+                    objectID = line[0]
+                    if 'IN' in [objectID]:
+                        if objectID not in max_in_count:
+                            max_in_count[objectID] = 0
+                            max_in_count[objectID] += 1
+                    elif 'OUT' in [objectID]:
+                        if objectID not in max_out_count:
+                            max_out_count[objectID] = 0
+                            max_out_count[objectID] += 1
 
-            # go2Records2.txtに,dという辞書の中の各要素をループ処理をさせvalue変数には辞書の値が代入され、if文とelif文でテキストに 'OUT' や 'IN' が含まれているかを判定。outというテキストがある場合'OUT' 、inというテキストがある場合 'IN' をプリント
-            with open('go2Records2.txt', 'a', encoding='utf-8') as f2:
-                for key, value in d1.items():
-                    if 'OUT' in value:
-                        print("OUT", file=f2)
-                    elif 'IN' in value:
-                        print("IN", file=f2)
-
-            with open('go2Records3.txt', 'a', encoding='utf-8') as f3:
-                print(d1)
         # room2
         if ymax > 1000 and xmax < 1000:
             d2 = {}
@@ -298,26 +294,26 @@ while True:
                     d2[k] = "ROOM2OUT"
                 elif v[0] < -25:
                     d2[k] = "ROOM2IN"
-                if bool(d2):
-                    # prints the direction of travel (if any) and timestamp
-                    print(d2, time.ctime())
             if bool(d2):
                 # print the direction of movement of each object
                 print(d2, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
-    # go2Recordsというファイルに入庫、出庫の記録を残す
-            with open('go2Records.txt', 'a', encoding='utf-8') as f1:
-                print(d2, objectID, xmin, ymin, xmax, ymax,
-                      v[0], time.ctime(), file=f1)
-            with open('go2Records2.txt', 'a', encoding='utf-8') as f2:
-                for key, value in d2.items():
-                    if 'OUT' in value:
-                        print("OUT", file=f2)
-                    elif 'IN' in value:
-                        print("IN", file=f2)
-
-            with open('go2Records3.txt', 'a', encoding='utf-8') as f3:
-                print(d2)
+                for line in d2.items():
+                    objectID = line[0]
+                    if 'IN' in [objectID]:
+                        if objectID not in max_in_count:
+                            max_in_count[objectID] = 0
+                            max_in_count[objectID] += 1
+                    elif 'OUT' in [objectID]:
+                        if objectID not in max_out_count:
+                            max_out_count[objectID] = 0
+                            max_out_count[objectID] += 1
+                            
+        # 最大のINカウントとOUTカウントを表示
+        for objectID in set(list(max_in_count.keys()) + list(max_out_count.keys())):
+            in_count = max_in_count.get(objectID, 0)
+            out_count = max_out_count.get(objectID, 0)
+            print(f"{objectID}: IN={in_count}, OUT={out_count}")                    
 
     # Press 'q' to quit and give the total tally
     if cv2.waitKey(1) == ord('q'):
