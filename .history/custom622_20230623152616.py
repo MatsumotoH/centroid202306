@@ -1,5 +1,4 @@
 import argparse
-import ast
 import importlib.util
 # 1029 packages
 import os
@@ -21,7 +20,9 @@ class VideoStream:
         # Initialize the PiCamera and the camera image stream
         self.stream = cv2.VideoCapture('rtsp://192.168.100.45:554/1/')
         ret = self.stream.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'MJPG'))
-        ret = self.stream.set(3,resolution[0])
+        rcar_counts = {}
+total_in = 0
+total_out = 0et = self.stream.set(3,resolution[0])
         ret = self.stream.set(4,resolution[1])
             
         # Read first frame from the stream
