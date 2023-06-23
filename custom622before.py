@@ -1,6 +1,6 @@
 import argparse
 import importlib.util
-# 548 packages
+# 1651 packages
 import os
 import sys
 import time
@@ -161,9 +161,11 @@ videostream = VideoStream(resolution=(imW,imH),framerate=30).start()
 time.sleep(1)
 
 # Newly added co-ord stuff
-car_counts = {}
-total_in = 0
-total_out = 0
+outcount = 0
+incount = 0 
+obsFrames = 0
+max_in_count = {}
+max_out_count = {}
 
 #for frame1 in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):
 while True:
@@ -267,73 +269,49 @@ while True:
             d1 = {}
             for k, v in x.items():
                 if v[0] > 8:
-                    d1[k] = "OUT"
+                    d1[k] = "ROOM1OUT"
                 elif v[0] < -8:
-                    d1[k] = "IN"
+                    d1[k] = "ROOM1IN"
             if bool(d1):
                 print(d1, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
-                for car_id, status in d1.items():
-                  # 車のIDが辞書にない場合、新しいエントリを作成
-                  if car_id not in car_counts:
-                      car_counts[car_id] = {'in': 0, 'out': 0}
-                  
-                  # 入庫または出庫の回数をカウント
-                  car_counts[car_id][status.lower()] += 1
-                  
-                  # トータルの入庫と出庫の回数をカウント
-                  if status.lower() == 'in':
-                      total_in += 1
-                  else:
-                      total_out += 1
-                # 各車のIDごとに、累計が多い方を判断
-                  for car_id, counts in car_counts.items():
-                      if counts['in'] > counts['out']:
-                          print(f'Car {car_id} has entered more times than it has exited.')
-                      elif counts['out'] > counts['in']:
-                          print(f'Car {car_id} has exited more times than it has entered.')
-                      else:
-                          print(f'Car {car_id} has entered and exited the same number of times.')
+                for line in d1.items():
+                    objectID = line[0]
+                    #objectIDの何に’IN'がある場合max_in_countに追加
+                    if 'IN' in [objectID]:
+                      max_in_count[objectID] += 1
+                    elif 'OUT' in [objectID]:
+                      max_out_count[objectID] += 1
 
         # room2
         if ymax > 1000 and xmax < 1000:
             d2 = {}
             for k, v in x.items():
                 if v[0] > 25:
-                    d2[k] = "OUT"
+                    d2[k] = "ROOM2OUT"
                 elif v[0] < -25:
-                    d2[k] = "IN"
+                    d2[k] = "ROOM2IN"
             if bool(d2):
                 # print the direction of movement of each object
                 print(d2, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
-                for car_id, status in d2.items():
-                  # 車のIDが辞書にない場合、新しいエントリを作成
-                  if car_id not in car_counts:
-                      car_counts[car_id] = {'in': 0, 'out': 0}
-                  
-                  # 入庫または出庫の回数をカウント
-                  car_counts[car_id][status.lower()] += 1
-                  
-                  # トータルの入庫と出庫の回数をカウント
-                  if status.lower() == 'in':
-                      total_in += 1
-                  else:
-                      total_out += 1
-                # 各車のIDごとに、累計が多い方を判断
-                  for car_id, counts in car_counts.items():
-                      if counts['in'] > counts['out']:
-                          print(f'Car {car_id} has entered more times than it has exited.')
-                      elif counts['out'] > counts['in']:
-                          print(f'Car {car_id} has exited more times than it has entered.')
-                      else:
-                          print(f'Car {car_id} has entered and exited the same number of times.')
-      # トータルの入庫と出庫の回数を表示
-    print(f'IN: {total_in}')
-    print(f'OUT: {total_out}')
+                for line in d2.items():
+                    objectID = line[0]
+                    #objectIDの何に’IN'がある場合max_in_countに追加
+                    if 'IN' in [objectID]:
+                      max_in_count[objectID] += 1
+                    elif 'OUT' in [objectID]:
+                      max_out_count[objectID] += 1
+                            
+        # 最大のINカウントとOUTカウントを表示
+        for objectID in set(list(max_in_count.keys()) + list(max_out_count.keys())):
+            in_count = max_in_count.get(objectID, 0)
+            out_count = max_out_count.get(objectID, 0)
+            print(f"{objectID}: IN={in_count}, OUT={out_count}")                    
 
     # Press 'q' to quit and give the total tally
     if cv2.waitKey(1) == ord('q'):
+        print("OUT",outcount,"IN",incount)
         break
 
 # Clean up
