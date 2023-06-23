@@ -161,7 +161,6 @@ videostream = VideoStream(resolution=(imW,imH),framerate=30).start()
 time.sleep(1)
 
 # Newly added co-ord stuff
-obsFrames = 0
 car_counts = {}
 total_in = 0
 total_out = 0
