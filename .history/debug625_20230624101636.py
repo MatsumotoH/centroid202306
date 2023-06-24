@@ -16,6 +16,7 @@ for line in open('622.txt', 'r').readlines():
       if counts['in'] > counts['out']:
         total_in += 1
       else:
+        total_in += 1
         total_out += 1
                 # Total number of statuses 
 print('Total IN: ', total_in)

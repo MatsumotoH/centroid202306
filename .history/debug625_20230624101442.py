@@ -6,6 +6,9 @@ total_out = 0
 for line in open('622.txt', 'r').readlines():
   dict_str = line.split('}')[0] + '}'
   d = ast.literal_eval(dict_str)
+  car_counts = {}
+  total_in = 0
+  total_out = 0
   for car_id, status in d.items():
     if car_id not in car_counts:
                       car_counts[car_id] = {'in': 0, 'out': 0}
@@ -16,6 +19,7 @@ for line in open('622.txt', 'r').readlines():
       if counts['in'] > counts['out']:
         total_in += 1
       else:
+        total_in += 1
         total_out += 1
                 # Total number of statuses 
 print('Total IN: ', total_in)

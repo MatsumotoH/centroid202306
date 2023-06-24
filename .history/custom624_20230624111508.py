@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1138 packages
+# 1114 packages
 import os
 import sys
 import time
@@ -284,8 +284,7 @@ while True:
                     car_counts[car_id] = {'in': 0, 'out': 0}
                   # Count the number of times the vehicle has entered or exited
                   car_counts[car_id][status.lower()] += 1
-                total_in = 0
-                total_out = 0
+                  print(car_counts)
                 # Count the total number of statuses of the one with the higher cumulative total for each car ID.
                 for car_id, counts in car_counts.items():
                   if counts['in'] > counts['out']:
@@ -315,8 +314,6 @@ while True:
                   # Count the number of times the vehicle has entered or exited
                     car_counts[car_id][status.lower()] += 1
                     print(car_counts)
-                  total_in = 0
-                  total_out = 0
                   # Count the total number of statuses of the one with the higher cumulative total for each car ID.
                   for car_id, counts in car_counts.items():
                       if counts['in'] > counts['out']:
