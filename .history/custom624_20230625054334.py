@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 551 packages
+# 543 packages
 import os
 import sys
 import time
@@ -325,8 +325,6 @@ while True:
     cv2.putText(frame, f'Total IN: {total_in}', (1750, 200),
                 cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2, cv2.LINE_AA)
     cv2.putText(frame, f'Total OUT: {total_out}', (1750, 300),
-                cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2, cv2.LINE_AA)
-    cv2.putText(frame, f'STOP: {50+total_out-total_in}', (1750, 400),
                 cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2, cv2.LINE_AA)
                   
       # Draw framerate in corner of frame

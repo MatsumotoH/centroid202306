@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 551 packages
+# 535 packages
 import os
 import sys
 import time
@@ -323,11 +323,9 @@ while True:
     cv2.rectangle(frame, (1700, 100), (2400, 700), (0, 0, 0), -1)
     # in_countとout_countをputTextにて表示
     cv2.putText(frame, f'Total IN: {total_in}', (1750, 200),
-                cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2, cv2.LINE_AA)
-    cv2.putText(frame, f'Total OUT: {total_out}', (1750, 300),
-                cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2, cv2.LINE_AA)
-    cv2.putText(frame, f'STOP: {50+total_out-total_in}', (1750, 400),
-                cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 2, cv2.LINE_AA)
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 1)
+    cv2.putText(frame, f'Total OUT: {total_out}', (50, 150),
+                cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 1)
                   
       # Draw framerate in corner of frame
     cv2.putText(frame, 'FPS: {0:.2f}'.format(frame_rate_calc), (1700, 50),
