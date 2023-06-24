@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1653 packages
+# 1636 packages
 import os
 import sys
 import time
@@ -319,8 +319,8 @@ while True:
                   print('Total IN: ', total_in)
                   print('Total OUT:', total_out)
                   
-    # 矩形黒の塗りつぶしボックスを作成
-    cv2.rectangle(frame, (1700, 100), (2000, 380), (0, 0, 0), -1)  
+                  # 矩形黒の塗りつぶしボックスを作成
+                  cv2.rectangle(frame, (1700, 100), (2000, 380), (0, 0, 0), -1)  
                   
       # Draw framerate in corner of frame
     cv2.putText(frame, 'FPS: {0:.2f}'.format(frame_rate_calc), (1700, 50),
