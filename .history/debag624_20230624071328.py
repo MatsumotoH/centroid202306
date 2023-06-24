@@ -16,8 +16,6 @@ with open('622.txt', 'r') as f:
         # 車のIDとステータスを取得
         car_id, status = list(d.items())[0]
         
-        print(car_id, status)
-        
         # 車のIDが辞書にない場合、新しいエントリを作成
         if car_id not in car_counts:
             car_counts[car_id] = {'in': 0, 'out': 0}

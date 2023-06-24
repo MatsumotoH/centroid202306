@@ -11,12 +11,8 @@ with open('622.txt', 'r') as f:
         dict_str = line.split('}')[0] + '}'
         # 文字列を辞書に変換
         d = ast.literal_eval(dict_str)
-        
-        print(d)
         # 車のIDとステータスを取得
         car_id, status = list(d.items())[0]
-        
-        print(car_id, status)
         
         # 車のIDが辞書にない場合、新しいエントリを作成
         if car_id not in car_counts:
