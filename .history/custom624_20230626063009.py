@@ -221,13 +221,9 @@ while True:
                 box = np.array([xmin,ymin,xmax,ymax])
             
                 rects.append(box.astype("int"))
-                
-                grouped_rectangles = cv2.groupRectangles(rects, 1, 0.2) 
             
-                # Draw rectangle
-                for rect in grouped_rectangles[0]:
-                    startX, startY, endX, endY = rect
-                    cv2.rectangle(frame, (startX, startY), (endX, endY), (0, 255, 0), 2)
+                (startX, startY, endX, endY) = box.astype("int")
+                cv2.rectangle(frame, (startX, startY), (endX, endY), (10, 255, 0), 2)
             
                 # Draw label
                 label = '%s: %d%%' % (object_name, int(scores[i]*100)) # Example: 'person: 72%'
