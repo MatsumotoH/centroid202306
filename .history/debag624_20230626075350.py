@@ -21,17 +21,18 @@ with open('622.txt', 'r') as f:
             car_counts[car_id] = {'in': 0, 'out': 0}
         
         # 入庫または出庫の回数をカウント
-        car_counts[car_id][status.lower()] += 1
-        print(car_counts)
+            car_counts[car_id][status.lower()] += 1
         total_in = 0
         total_out = 0
         # 各車のIDごとに、累計が多い方のステータスをカウント
         for car_id, counts in car_counts.items():
             if counts['in'] > counts['out']:
                 total_in += 1
-            elif counts['in'] < counts['out']:
+            else:
                 total_out += 1
-
+            # elif counts['out'] > counts['in']:
+            #     total_out += 1
+        
         # 各車のIDごとに累計が多い方のステータスのトータル数を表示
         print(f'Total IN: {total_in}')
         print(f'Total OUT: {total_out}')

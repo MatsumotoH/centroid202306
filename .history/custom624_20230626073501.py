@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 832 packages
+# 734 packages
 import os
 import sys
 import time
@@ -292,7 +292,7 @@ while True:
                 # print('Total IN:', total_in)
                 # print('Total OUT:', total_out)
         # room2
-        if ymax > 1250 and xmin > 380 and xmax < 1000:
+        if ymax > 1000 and xmax < 1000:
             d2 = {}
             for k, v in x.items():
                 if v[0] > 25:
