@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1438 packages
+# 1335 packages
 import os
 import sys
 import time
@@ -278,17 +278,17 @@ while True:
                   car_counts[car_id][status.lower()] += 1
                   print(car_counts)
                   # car_counts辞書からinとoutの値を取得
-                  total_in = 0
-                  total_out = 0
-                  # 各車のIDごとに、累計が多い方のステータスをカウント
-                  for car_id, counts in car_counts.items():
-                      if counts['in'] > counts['out']:
-                          total_in += 1
-                      elif counts['in'] < counts['out']:
-                          total_out += 1
-                      # 同数の場合は何もしない
-                      if counts['in'] == counts['out']:
-                        pass
+                  for car_id, status['in'] in car_counts.items():
+                    #status['in'] 
+                    pre_in = counts['in']
+                  for car_id, counts['out'] in car_counts.items():
+                    pre_out = counts['out']
+                  print(pre_in, pre_out)
+                    # if counts['in'] > counts['out']:
+                  if pre_in > pre_out:
+                    total_in += 1
+                  else:
+                    total_out += 1
 
         # room2
         if ymax > 1000 and xmax < 1380:
@@ -304,17 +304,24 @@ while True:
                 print(d2, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
                 # get car id and status
-                total_in = 0
-                total_out = 0
-                # 各車のIDごとに、累計が多い方のステータスをカウント
-                for car_id, counts in car_counts.items():
-                    if counts['in'] > counts['out']:
-                        total_in += 1
-                    elif counts['in'] < counts['out']:
-                        total_out += 1
-                    # 同数の場合は何もしない
-                    if counts['in'] == counts['out']:
-                        pass
+                for car_id, status in d2.items():
+                # If the vehicle ID is not in the dictionary, create a new entry
+                  if car_id not in car_counts:
+                    car_counts[car_id] = {'in': 0, 'out': 0}
+                  # Count the number of times the vehicle has entered or exited
+                    car_counts[car_id][status.lower()] += 1
+                  # car_counts辞書からinとoutの値を取得
+                  for car_id, counts['in'] in car_counts.items():
+                    pre_in = counts['in']
+                  for car_id, counts['out'] in car_counts.items():
+                    pre_out = counts['out']
+                  print(pre_in, pre_out)
+                    # if counts['in'] > counts['out']:
+                  if pre_in > pre_out:
+                    total_in += 1
+                  else:
+                    total_out += 1
+                  
     # 矩形黒の塗りつぶしボックスを作成
     cv2.rectangle(frame, (1700, 100), (2400, 700), (0, 0, 0), -1)
     # in_countとout_countをputTextにて表示
