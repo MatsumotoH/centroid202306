@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1529 packages
+# 1438 packages
 import os
 import sys
 import time
@@ -258,7 +258,7 @@ while True:
     #and tally up total number of objects that travelled left or right
     
     if obsFrames % 1 == 0:
-        # room1
+        # room1   
         if ymax <= 1000 and xmax < 1380 and xmin > 570:
             d1 = {}
             for k, v in x.items():
@@ -277,8 +277,10 @@ while True:
                   # Count the number of times the vehicle has entered or exited
                   car_counts[car_id][status.lower()] += 1
                   print(car_counts)
+                  # car_counts辞書からinとoutの値を取得
                   total_in = 0
                   total_out = 0
+                  # 各車のIDごとに、累計が多い方のステータスをカウント
                   for car_id, counts in car_counts.items():
                       if counts['in'] > counts['out']:
                           total_in += 1
@@ -293,32 +295,26 @@ while True:
         # if ymax > 1000 and xmax < 1000:
             d2 = {}
             for k, v in x.items():
-                if v[0] > 10: #25
+                if v[0] > 18: #25
                     d2[k] = "OUT"
-                elif v[0] < -10:
+                elif v[0] < -18:
                     d2[k] = "IN"
             if bool(d2):
                 # print the direction of movement of each object
                 print(d2, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
                 # get car id and status
-                for car_id, status in d2.items():
-                # If the vehicle ID is not in the dictionary, create a new entry
-                    if car_id not in car_counts:
-                      car_counts[car_id] = {'in': 0, 'out': 0}
-                    # Count the number of times the vehicle has entered or exited
-                    car_counts[car_id][status.lower()] += 1
-                    print(car_counts)
-                    tatal_in = 0
-                    total_out = 0
-                    for car_id, counts in car_counts.items():
-                      if counts['in'] > counts['out']:
-                          total_in += 1
-                      elif counts['in'] < counts['out']:
-                          total_out += 1
-                      # 同数の場合は何もしない
-                      if counts['in'] == counts['out']:
-                          pass
+                total_in = 0
+                total_out = 0
+                # 各車のIDごとに、累計が多い方のステータスをカウント
+                for car_id, counts in car_counts.items():
+                    if counts['in'] > counts['out']:
+                        total_in += 1
+                    elif counts['in'] < counts['out']:
+                        total_out += 1
+                    # 同数の場合は何もしない
+                    if counts['in'] == counts['out']:
+                        pass
     # 矩形黒の塗りつぶしボックスを作成
     cv2.rectangle(frame, (1700, 100), (2400, 700), (0, 0, 0), -1)
     # in_countとout_countをputTextにて表示

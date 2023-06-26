@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1529 packages
+# 1642 packages
 import os
 import sys
 import time
@@ -302,7 +302,7 @@ while True:
                 print(d2, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
                 # get car id and status
-                for car_id, status in d2.items():
+                for dar_id, status in d2.items():
                 # If the vehicle ID is not in the dictionary, create a new entry
                     if car_id not in car_counts:
                       car_counts[car_id] = {'in': 0, 'out': 0}

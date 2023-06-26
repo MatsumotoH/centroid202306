@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1529 packages
+# 1438 packages
 import os
 import sys
 import time
@@ -258,7 +258,7 @@ while True:
     #and tally up total number of objects that travelled left or right
     
     if obsFrames % 1 == 0:
-        # room1
+        # room1   
         if ymax <= 1000 and xmax < 1380 and xmin > 570:
             d1 = {}
             for k, v in x.items():
@@ -302,10 +302,10 @@ while True:
                 print(d2, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
                 # get car id and status
-                for car_id, status in d2.items():
+                for dar_id, status in d2.items():
                 # If the vehicle ID is not in the dictionary, create a new entry
                     if car_id not in car_counts:
-                      car_counts[car_id] = {'in': 0, 'out': 0}
+                      car_counts[car_id] = {'in': 0, 'out': 0}  
                     # Count the number of times the vehicle has entered or exited
                     car_counts[car_id][status.lower()] += 1
                     print(car_counts)
