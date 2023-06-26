@@ -277,17 +277,17 @@ while True:
                   # Count the number of times the vehicle has entered or exited
                   car_counts[car_id][status.lower()] += 1
                   print(car_counts)
-                  # Total number of statuses with the higher cumulative total for each car ID
-                  pre_in = sum(v['in'] for v in car_counts.values())
-                  pre_out = sum(v['out'] for v in car_counts.values())
-                  # Count the total number of statuses of the one with the higher cumulative total for each car ID. 
-                  for car_id, counts in car_counts.items():
-                    # if counts['in'] > counts['out']:
-                    if counts['in'] > counts['out']:
-                      total_in += 1
-                    else:
-                      total_out += 1
-
+                  total_in = sum(v['in'] for v in car_counts.values())
+                  total_out = sum(v['out'] for v in car_counts.values())
+                # Count the total number of statuses of the one with the higher cumulative total for each car ID.
+                for car_id, counts in car_counts.items():
+                  if counts['in'] > counts['out']:
+                    total_in += 1
+                  else:
+                    total_out += 1
+                # Total number of statuses with the higher cumulative total for each car ID
+                # print('Total IN:', total_in)
+                # print('Total OUT:', total_out)
         # room2
         if ymax > 1000 and xmax < 1380:
         # if ymax > 1000 and xmax < 1000:
@@ -308,17 +308,18 @@ while True:
                     car_counts[car_id] = {'in': 0, 'out': 0}
                   # Count the number of times the vehicle has entered or exited
                     car_counts[car_id][status.lower()] += 1
-                  print(car_counts)
-                  # Total number of statuses with the higher cumulative total for each car ID
-                  pre_in = sum(v['in'] for v in car_counts.values())
-                  pre_out = sum(v['out'] for v in car_counts.values())
-                  # Count the total number of statuses of the one with the higher cumulative total for each car ID. 
+                    print(car_counts)
+                  total_in = sum(v['in'] for v in car_counts.values())
+                  total_out = sum(v['out'] for v in car_counts.values())
+                  # Count the total number of statuses of the one with the higher cumulative total for each car ID.
                   for car_id, counts in car_counts.items():
-                    # if counts['in'] > counts['out']:
-                    if counts['in'] > counts['out']:
-                      total_in += 1
-                    else:
-                      total_out += 1
+                      if counts['in'] > counts['out']:
+                          total_in += 1
+                      else:
+                          total_out += 1
+                  # Total number of statuses with the higher cumulative total for each car ID
+                  # print('Total IN: ', total_in)
+                  # print('Total OUT:', total_out)
                   
     # 矩形黒の塗りつぶしボックスを作成
     cv2.rectangle(frame, (1700, 100), (2400, 700), (0, 0, 0), -1)
