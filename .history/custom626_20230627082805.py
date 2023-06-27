@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 844 packages
+# 827 packages
 import os
 import sys
 import time
@@ -307,17 +307,16 @@ while True:
                       car_counts[car_id] = {'in': 0, 'out': 0}
                     # Count the number of times the vehicle has entered or exited
                     car_counts[car_id][status.lower()] += 1
-                    print(car_counts)
-                total_in = 0
-                total_out = 0
-                for car_id, counts in car_counts.items():
-                  if counts['in'] > counts['out']:
-                      total_in += 1
-                  elif counts['in'] < counts['out']:
-                      total_out += 1
-                  # 同数の場合は何もしない
-                  if counts['in'] == counts['out']:
-                      pass
+                    tatal_in = 0
+                    total_out = 0
+                    for car_id, counts in car_counts.items():
+                      if counts['in'] > counts['out']:
+                          total_in += 1
+                      elif counts['in'] < counts['out']:
+                          total_out += 1
+                      # 同数の場合は何もしない
+                      if counts['in'] == counts['out']:
+                          pass
     # 矩形黒の塗りつぶしボックスを作成
     cv2.rectangle(frame, (1700, 100), (2400, 700), (0, 0, 0), -1)
     # in_countとout_countをputTextにて表示
