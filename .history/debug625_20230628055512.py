@@ -7,7 +7,7 @@ total_out = 0
 for line in open('622.txt', 'r').readlines():
   dict_str = line.split('}')[0] + '}'
   d = ast.literal_eval(dict_str)
-  for car_id, status in d.items():
+  for car_id, status in d1.items():
     # If the vehicle ID is not in the dictionary, create a new entry
     if car_id not in car_counts:
       car_counts[car_id] = {'in': 0, 'out': 0}
