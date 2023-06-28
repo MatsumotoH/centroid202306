@@ -23,11 +23,11 @@ for line in open('622.txt', 'r').readlines():
         # 同数の場合は何もしない
         else:
           counts['in'] == counts['out']
-          pass
+          # pass
       # if counts['in'] == counts['out']:
-      #   if status == 'IN':
-      #     total_in += 1
-      #   else:
-      #     total_out += 1
+          if status == 'IN':
+            total_in += 1
+          else:
+            total_out += 1
 print('Total IN: ', total_in)
 print('Total OUT:', total_out)
