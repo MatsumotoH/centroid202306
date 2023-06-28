@@ -166,8 +166,6 @@ obsFrames = 0
 car_counts = {}
 total_in = 0
 total_out = 0
-direction1 = {}
-direction2 = {}
 
 #for frame1 in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):
 while True:
@@ -262,14 +260,9 @@ while True:
     if obsFrames % 1 == 0:
         # room1
         if ymax <= 1000 and xmax < 1380 and xmin > 570:
-          for (objectID, centroid) in objects.items():
+          
           # centroid[0]をdirectin1リストに格納
-            direction1.append(centroid[0])
-            if len(direction1) > 1:
-              if direction1[0] - direction1[-1] > 0:
-                outsignal = centroid[0]
-              else:
-                insignal = centroid[0]
+          
           
           
           
