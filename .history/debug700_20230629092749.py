@@ -9,4 +9,5 @@ for line in open('700.txt', 'r').readlines():
   objects = dict_str.strip('\n')
   for objectID, (centroid[0],centroid[1]) in objects.items():
     # If the vehicle ID is not in the dictionary, create a new entry
-   print(objectID, centroid[0], centroid[1])
+    if car_id not in car_counts:
+      car_counts[car_id] = {'in': 0, 'out': 0}
