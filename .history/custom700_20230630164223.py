@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1642 packages
+# 552 packages
 import os
 import sys
 import time

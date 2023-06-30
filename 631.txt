@@ -1,0 +1,18 @@
+OrderedDict([(8, array([1049,  690])), (9, array([737, 756]))])
+OrderedDict([(8, array([1049,  690])), (9, array([684, 715]))])
+OrderedDict([(8, array([1049,  690])), (9, array([599, 758]))])
+{9: 'OUT'} 9 1 195 1197 1321 85 Fri Jun 30 16:45:44 2023
+OrderedDict([(8, array([1049,  690])), (9, array([549, 738]))])
+{9: 'OUT'} 9 1 170 1098 1306 50 Fri Jun 30 16:45:44 2023
+OrderedDict([(8, array([1049,  690])), (9, array([515, 739]))])
+{9: 'OUT'} 9 1 199 1030 1279 34 Fri Jun 30 16:45:44 2023
+OrderedDict([(8, array([1049,  690])), (9, array([490, 739]))])
+{9: 'OUT'} 9 1 209 980 1269 25 Fri Jun 30 16:45:44 2023
+OrderedDict([(8, array([1049,  690])), (9, array([457, 751]))])
+{9: 'OUT'} 9 1 221 913 1281 33 Fri Jun 30 16:45:44 2023
+OrderedDict([(8, array([1049,  690])), (9, array([438, 780]))])
+{9: 'OUT'} 9 8 240 868 1320 19 Fri Jun 30 16:45:45 2023
+OrderedDict([(8, array([1049,  690])), (9, array([362, 794]))])
+{9: 'OUT'} 9 4 266 721 1323 76 Fri Jun 30 16:45:45 2023
+OrderedDict([(8, array([1049,  690])), (9, array([355, 780]))])
+すす
