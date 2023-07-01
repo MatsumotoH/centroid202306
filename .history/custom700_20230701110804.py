@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1110 packages
+# 1101 packages
 import os
 import sys
 import time
@@ -201,7 +201,7 @@ while True:
 
     #rects variable
     rects =[]
-    centroid0 = 0
+    centroid = 0
     ymin = 0
     xmin = 0
     ymax = 0
@@ -257,7 +257,7 @@ while True:
     frame_rate_calc= 1/time1
     #count number of frames for direction calculation
     obsFrames = obsFrames + 1
-    
+    centroid0 = centroid[0]
     #see what the difference in centroids is after every x frames to determine direction of movement
     #and tally up total number of objects that travelled left or right
     print(xmin, ymin, xmax, ymax,
