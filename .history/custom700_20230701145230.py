@@ -258,7 +258,7 @@ while True:
     # if obsFrames % 1 == 0:
     # room1
     if ymax <= 1000 and xmax < 1380 and xmin > 570:
-       print(objectID, xmin, ymin, xmax, ymax, centroid0, time.ctime(), flush=True)
+       print(xmin, ymin, xmax, ymax, centroid0, time.ctime(), flush=True)
             # for k, v in x.items():
             #   if bool(d1):
             #     print(d1, objectID, xmin, ymin, xmax, ymax,
@@ -294,7 +294,7 @@ while True:
 
     #  room2
     if ymax > 1000 and xmax < 1380:
-      print(objectID, xmin, ymin, xmax, ymax, centroid0, time.ctime(), flush=True)
+      print(xmin, ymin, xmax, ymax, centroid0, time.ctime(), flush=True)
         # # if ymax > 1000 and xmax < 1000:
         #     d2 = {}
         #     for k, v in x.items():
