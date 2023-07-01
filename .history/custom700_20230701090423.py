@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 918 packages
+# 904 packages
 import os
 import sys
 import time
@@ -261,8 +261,10 @@ while True:
         # room1
         if ymax <= 1000 and xmax < 1380 and xmin > 570:
             d1 = {}
-            for k, v in x.items():  
-              if bool(d1):
+            for k, v in x.items():
+                ct1 = (xmin + xmax) // 2
+                d1[v] = ct1  
+            if bool(d1):
                 print(d1, objectID, xmin, ymin, xmax, ymax,
                       v[0], time.ctime(), flush=True)
                 # get car id and status
