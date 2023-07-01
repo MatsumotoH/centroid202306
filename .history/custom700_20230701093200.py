@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 959 packages
+# 931 packages
 import os
 import sys
 import time
@@ -201,7 +201,6 @@ while True:
 
     #rects variable
     rects =[]
-    centroid = 0
     ymin = 0
     xmin = 0
     ymax = 0
@@ -254,23 +253,22 @@ while True:
     frame_rate_calc= 1/time1
     #count number of frames for direction calculation
     obsFrames = obsFrames + 1
-    centroid0 = centroid[0]
+
     #see what the difference in centroids is after every x frames to determine direction of movement
     #and tally up total number of objects that travelled left or right
-    print(xmin, ymin, xmax, ymax,
-                      centroid0, time.ctime(), flush=True)
-    # if obsFrames % 1 == 0:
-    #     # room1
-    #     if ymax <= 1000 and xmax < 1380 and xmin > 570:
-    #         d1 = {}
-    #         for k, v in x.items():
-    #             if v[0] > 8:
-    #                 d1[k] = "OUT"
-    #             elif v[0] < -8:
-    #                 d1[k] = "IN"
-    #         if bool(d1):
-    #             print(d1, objectID, xmin, ymin, xmax, ymax,
-    #                   centroid[0], time.ctime(), flush=True)
+    
+    if obsFrames % 1 == 0:
+        # room1
+        if ymax <= 1000 and xmax < 1380 and xmin > 570:
+            d1 = {}
+            for k, v in x.items():
+                if v[0] > 8:
+                    d1[k] = "OUT"
+                elif v[0] < -8:
+                    d1[k] = "IN"
+            if bool(d1):
+                print(d1, objectID, xmin, ymin, xmax, ymax,
+                      v[0], time.ctime(), flush=True)
             # for k, v in x.items():
             #   if bool(d1):
             #     print(d1, objectID, xmin, ymin, xmax, ymax,
