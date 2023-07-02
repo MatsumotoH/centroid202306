@@ -274,14 +274,14 @@ while True:
     # car_list1に追加
     car_list1.append([objectID, new_centroid])
 
-    # 各objectIDごとのtotal_inとtotal_outの更新
-    for obj_id, counter in counters1.items():
+    # カウンターの更新
+    if len(car_list1) > 1:
         if car_list1[-1][1] - car_list1[0][1] > 0:
-            counter['total_in'] += 1
+            counters1[objectID]['total_in'] += 1
         elif car_list1[-1][1] - car_list1[0][1] < 0:
-            counter['total_out'] += 1
+            counters1[objectID]['total_out'] += 1
 
-    # car_list全体の結果の出力
+    # car_list全体の数量の出力
     total_in = sum(counter['total_in'] for counter in counters1.values())
     total_out = sum(counter['total_out'] for counter in counters1.values())
             
@@ -301,11 +301,11 @@ while True:
         
     car_list2.append([objectID, new_centroid])
     
-    for obj_id, counter in counters2.items():
-      if car_list2[-1][1] - car_list2[0][1] > 0:
-          counter['total_in'] += 1
-      elif car_list2[-1][1] - car_list2[0][1] < 0:
-          counter['total_out'] += 1
+    if len(car_list2) > 1:
+        if car_list2[-1][1] - car_list2[0][1] > 0:
+            counters2[objectID]['total_in'] += 1
+        elif car_list2[-1][1] - car_list2[0][1] < 0:
+            counters2[objectID]['total_out'] += 1 
             
     total_in = sum(counter['total_in'] for counter in counters2.values())
     total_out = sum(counter['total_out'] for counter in counters2.values()) 
