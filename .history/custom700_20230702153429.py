@@ -168,8 +168,6 @@ total_in = 0
 total_out = 0
 car_list1 = []
 car_list2 = []
-counters1 = {}
-counters2 = {}
 #for frame1 in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):
 while True:
 
@@ -262,24 +260,20 @@ while True:
     if ymax <= 1000 and xmax < 1380 and xmin > 570:
       print(objectID, xmin, ymin, xmax, ymax, centroid0, time.ctime(), flush=True)
       new_centroid = (xmin + xmax)//2
-      #car_list1のobjectIDごとのnew_centroidの一番最後の値から、一番最初の値を引く。
-      if objectID not in car_list1:
-        counters1[objectID] = {'total_in': 0, 'total_out': 0}
-      # 直前のobjectIDと現在のobjectIDが異なる場合、直前のカウンター変数をリセット
-      if len(car_list1) > 0 and car_list1[-1][0] != objectID:
-        prev_objectID = car_list1[-1][0]
-        counters1[prev_objectID] = {'total_in': 0, 'total_out': 0}  
-        
-            #car_list1にobjectIDとnew_centroidを追加
+      #car_list1にobjectIDとnew_centroidを追加
       car_list1.append([objectID, new_centroid])
-      
+      #car_list1のobjectIDごとのnew_centroidの一番最後の値から、一番最初の値を引く。
+      total_in = 0
+      total_out = 0
       if len(car_list1) > 1:
         for objectID,new_centroid in car_list1:
           if car_list1[-1][1] - car_list1[0][1] > 0:
             total_in += 1
           elif car_list1[-1][1] - car_list1[0][1] < 0:
             total_out += 1
-            
+          else:
+            pass
+      
 
     #  room2
     if ymax > 1000 and xmax < 1380:
