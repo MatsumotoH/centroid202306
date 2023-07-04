@@ -18,10 +18,6 @@ for car in car_List:
             else:
                 state = "OUT"
 
-            # 同じobjectIDのエントリがあれば削除
-            if objectID in objectID_count:
-                del objectID_count[objectID]
-
             if objectID in objectID_count:
                 if state in objectID_count[objectID]:
                     objectID_count[objectID][state] += 1
@@ -31,8 +27,8 @@ for car in car_List:
                 objectID_count[objectID] = {"IN": 0, "OUT": 0}
                 objectID_count[objectID][state] = 1
 
-            IN_count = 0
-            OUT_count = 0
-            for objectID in objectID_count:
-                IN_count += objectID_count[objectID]["IN"]
-                OUT_count += objectID_count[objectID]["OUT"]
+            print(f"ObjectID {objectID}: {state} = {objectID_count[objectID][state]}")
+
+    # 同じobjectIDのエントリがあれば削除
+    if objectID in objectID_count:
+        del objectID_count[objectID]

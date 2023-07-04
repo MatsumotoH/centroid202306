@@ -31,8 +31,4 @@ for car in car_List:
                 objectID_count[objectID] = {"IN": 0, "OUT": 0}
                 objectID_count[objectID][state] = 1
 
-            IN_count = 0
-            OUT_count = 0
-            for objectID in objectID_count:
-                IN_count += objectID_count[objectID]["IN"]
-                OUT_count += objectID_count[objectID]["OUT"]
+            print(f"ObjectID {objectID}: {state} = {objectID_count[objectID][state]}")
