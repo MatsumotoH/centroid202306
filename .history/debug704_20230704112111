@@ -10,6 +10,7 @@ for car in car_List:
         previous_centroids[objectID] = centroids  # 最初のcentroidsを保存
     else:
         if objectID in previous_centroids:
+            del objectID_count[objectID]
             difference = centroids - previous_centroids[objectID]
             previous_centroids[objectID] = centroids  # 直近のcentroidsを更新
 

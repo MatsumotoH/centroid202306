@@ -19,10 +19,11 @@ for car in car_List:
                 state = "OUT"
 
             if objectID in objectID_count:
-                del objectID_count[objectID]
                 objectID_count[objectID][state] += 1
             else:
                 objectID_count[objectID] = {"IN": 0, "OUT": 0}
                 objectID_count[objectID][state] += 1
 
-            print(f"ObjectID {objectID}: {state} = {objectID_count[objectID][state]}")
+for objectID, count in objectID_count.items():
+    for state, cnt in count.items():
+        print(f"ObjectID {objectID}: {state} = {cnt}")
