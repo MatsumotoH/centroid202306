@@ -15,16 +15,17 @@ with open('703.txt', 'r') as f:
           latest_object = car_list1[-1]
           objectID = latest_object[0]
           new_centroid = latest_object[1]
-
+          
         if objectID not in first_centroids:
             first_centroids[objectID] = new_centroid
-        #     car_counts[objectID] = {"in": 0, "out": 0}            
+            car_counts[objectID] = {"in": 0, "out": 0}
         else:
           diff = new_centroid - first_centroids[objectID]
           if diff > 0:
               car_counts[objectID]["in"] += 1
           elif diff < 0:
               car_counts[objectID]["out"] += 1
+          first_centroids[objectID] = new_centroid
         
         
         

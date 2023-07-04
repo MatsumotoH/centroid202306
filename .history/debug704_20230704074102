@@ -1,0 +1,21 @@
+car_List = [(1, 10), (1, 20), (1, 30), (2, 30), (2, 20), (2, 35), (3, 100), (3, 115), (3, 120)]
+
+previous_centroids = {}  # 一番最初のcentroidsを保持する辞書
+
+i = 0  # インデックスの初期化
+
+while i < len(car_List):
+    car = car_List[i]
+    objectID, centroids = car
+
+    if objectID not in previous_centroids:
+        previous_centroids[objectID] = centroids  # 最初のcentroidsを保存
+    else:
+        difference = centroids - previous_centroids[objectID]
+        previous_centroids[objectID] = centroids  # 直近のcentroidsを更新
+
+        # objectIDごとに最後の差分のみを出力
+        if i == len(car_List) - 1 or objectID != car_List[i + 1][0]:
+            print(f"ObjectID {objectID}: {centroids} - {previous_centroids[objectID]} = {difference}")
+    
+    i += 1

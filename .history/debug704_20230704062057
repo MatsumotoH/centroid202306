@@ -1,0 +1,14 @@
+car_List = [(1, 10), (1, 20), (1, 30), (2, 30), (2, 20), (2, 35), (3, 100), (3, 115), (3, 120)]
+
+previous_centroids = {}  # 直近のcentroidsを保持する辞書
+
+for car in car_List:
+    objectID, centroids = car
+
+    if objectID not in previous_centroids:
+        previous_centroids[objectID] = centroids  # 最初のcentroidsを保存
+    else:
+        difference = centroids - previous_centroids[objectID]
+        print(f"ObjectID {objectID}: {centroids} - {previous_centroids[objectID]} = {difference}")
+    
+    previous_centroids[objectID] = centroids  # 直近のcentroidsを更新
