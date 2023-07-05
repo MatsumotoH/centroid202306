@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1530 packages
+# 1500 packages
 import os
 import sys
 import time
@@ -174,7 +174,6 @@ previous_centroids1 = {}
 previous_centroids2 = {}
 objectID_count1 = {}
 objectID_count2 = {}
-difference = 0
 #for frame1 in camera.capture_continuous(rawCapture, format="bgr",use_video_port=True):
 while True:
 
@@ -212,7 +211,6 @@ while True:
     objectID = 0
     new_centroid1 = 0
     new_centroid2 = 0
-    difference = 0
     ymin = 0
     xmin = 0
     ymax = 0
@@ -294,7 +292,7 @@ while True:
           else:
               objectID_count1[objectID] = {'IN': 0, 'OUT': 0}
               objectID_count1[objectID][state] = 1
-          print(objectID_count1, flush=True)    
+              
           total_in = 0
           total_out = 0
           for objectID in objectID_count1:
@@ -328,7 +326,7 @@ while True:
           else:
               objectID_count2[objectID] = {'IN': 0, 'OUT': 0}
               objectID_count2[objectID][state] = 1
-          print(objectID_count2, flush=True)    
+              
           total_in = 0
           total_out = 0
           for objectID in objectID_count2:

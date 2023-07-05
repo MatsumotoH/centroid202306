@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1530 packages
+# 1503 packages
 import os
 import sys
 import time
@@ -294,7 +294,7 @@ while True:
           else:
               objectID_count1[objectID] = {'IN': 0, 'OUT': 0}
               objectID_count1[objectID][state] = 1
-          print(objectID_count1, flush=True)    
+              
           total_in = 0
           total_out = 0
           for objectID in objectID_count1:
@@ -328,7 +328,7 @@ while True:
           else:
               objectID_count2[objectID] = {'IN': 0, 'OUT': 0}
               objectID_count2[objectID][state] = 1
-          print(objectID_count2, flush=True)    
+              
           total_in = 0
           total_out = 0
           for objectID in objectID_count2:
