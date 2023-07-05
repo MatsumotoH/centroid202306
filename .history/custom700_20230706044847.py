@@ -312,7 +312,6 @@ while True:
       else:
         if objectID in previous_centroids:
           defference = new_centroid2 - previous_centroids[objectID]
-          # previous_centroids[objectID] = centroids  # most recent centroids update
           if difference > 0:
             state = 'IN'
           else:
