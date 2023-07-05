@@ -1,7 +1,7 @@
 import argparse
 import ast
 import importlib.util
-# 1439 packages
+# 1437 packages
 import os
 import sys
 import time
@@ -164,7 +164,6 @@ time.sleep(1)
 # Newly added co-ord stuff
 obsFrames = 0
 car_counts = {}
-new_centroids = 0
 total_in = 0
 total_out = 0
 car_list1 = []
@@ -208,7 +207,6 @@ while True:
     rects =[]
     centroid0 = 0
     objectID = 0
-    new_centroid = 0
     ymin = 0
     xmin = 0
     ymax = 0

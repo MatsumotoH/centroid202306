@@ -208,7 +208,6 @@ while True:
     rects =[]
     centroid0 = 0
     objectID = 0
-    new_centroid = 0
     ymin = 0
     xmin = 0
     ymax = 0
