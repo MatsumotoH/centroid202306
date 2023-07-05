@@ -288,11 +288,39 @@ while True:
             objectID_count1[objectID] = {'IN': 0, 'OUT': 0}
             objectID_count1[objectID][state] = 1
             
-        total_in = 0
-        total_out = 0
-        for objectID in objectID_count1:
-            total_in += objectID_count1[objectID]["IN"]
-            total_out += objectID_count1[objectID]["OUT"]    
+            
+         
+        
+          
+          
+          
+          counters1[objectID]['total_in'] += 1
+          # print('counters1', counters1, flush=True)
+          # print('previous_centroids1', previous_centroids1, flush=True)
+      
+      
+      
+        counters1[objectID] = {'total_in': 0, 'total_out': 0}
+
+    # 直前のobjectIDと現在のobjectIDが異なる場合、直前のカウンター変数をリセット
+    if len(car_list1) > 0 and car_list1[-1][0] != objectID:
+        prev_objectID = car_list1[-1][0]
+        counters1[prev_objectID] = {'total_in': 0, 'total_out': 0}
+
+    # car_list1に追加
+    car_list1.append([objectID, new_centroid])
+
+    # 各objectIDごとのtotal_inとtotal_outの更新
+    for obj_id, counter in counters1.items():
+        if car_list1[-1][1] - car_list1[0][1] > 0:
+            counter['total_in'] += 1
+        elif car_list1[-1][1] - car_list1[0][1] < 0:
+            counter['total_out'] += 1
+
+    # car_list全体の結果の出力
+    total_in = sum(counter['total_in'] for counter in counters1.values())
+    total_out = sum(counter['total_out'] for counter in counters1.values())
+            
 
     #  room2
     if ymax > 1000 and xmax < 1380:
@@ -300,33 +328,23 @@ while True:
         # # if ymax > 1000 and xmax < 1000:
       new_centroid = (xmin + xmax)//2
       # カウンター変数の初期化
-      # check counters1 for objectID
-    if objectID not in previous_centroids2:
-      previous_centroids2[objectID] = new_centroid
-    else:
-      if objectID in previous_centroids2:
-        defference = new_centroid - previous_centroids2[objectID]
-        if difference > 0:
-          state = 'IN'
-        else:
-          state = 'OUT'
-        if objectID in objectID_count2:
-          del  objectID_count2[objectID]
-        if objectID in objectID_count2:
-            if state in objectID_count2[objectID]:
-                objectID_count2[objectID][state] += 1
-            else:
-                objectID_count2[objectID][state] = 1
-        else:
-            objectID_count2[objectID] = {'IN': 0, 'OUT': 0}
-            objectID_count2[objectID][state] = 1
+    if objectID not in counters2:
+        counters2[objectID] = {'total_in': 0, 'total_out': 0}
+        
+    if len(car_list2) > 0 and car_list2[-1][0] != objectID:
+        prev_objectID = car_list2[-1][0]
+        counters2[prev_objectID] = {'total_in': 0, 'total_out': 0}
+        
+    car_list2.append([objectID, new_centroid])
+    
+    for obj_id, counter in counters2.items():
+      if car_list2[-1][1] - car_list2[0][1] > 0:
+          counter['total_in'] += 1
+      elif car_list2[-1][1] - car_list2[0][1] < 0:
+          counter['total_out'] += 1
             
-        total_in = 0
-        total_out = 0
-        for objectID in objectID_count2:
-            total_in += objectID_count2[objectID]["IN"]
-            total_out += objectID_count2[objectID]["OUT"]
-            
+    total_in = sum(counter['total_in'] for counter in counters2.values())
+    total_out = sum(counter['total_out'] for counter in counters2.values()) 
         
     # 矩形黒の塗りつぶしボックスを作成
     cv2.rectangle(frame, (1700, 100), (2400, 700), (0, 0, 0), -1)
