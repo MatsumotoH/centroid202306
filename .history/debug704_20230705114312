@@ -21,7 +21,7 @@ for car in car_List:
             # delet entries with the same objectID
             if objectID in objectID_count:
                 del objectID_count[objectID]
-            # # ???????????
+            # ???????????
             if objectID in objectID_count:
                 if state in objectID_count[objectID]:
                     objectID_count[objectID][state] += 1

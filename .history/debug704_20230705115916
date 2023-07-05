@@ -22,11 +22,11 @@ for car in car_List:
             if objectID in objectID_count:
                 del objectID_count[objectID]
             # # ???????????
-            if objectID in objectID_count:
-                if state in objectID_count[objectID]:
-                    objectID_count[objectID][state] += 1
-                else:
-                    objectID_count[objectID][state] = 1
+            # if objectID in objectID_count:
+            #     if state in objectID_count[objectID]:
+            #         objectID_count[objectID][state] += 1
+            #     else:
+            #         objectID_count[objectID][state] = 1
             else:
                 objectID_count[objectID] = {"IN": 0, "OUT": 0}
                 objectID_count[objectID][state] = 1

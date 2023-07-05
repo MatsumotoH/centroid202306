@@ -1,4 +1,4 @@
-car_List = [(1, 10), (1, 20), (1, 30), (2, 30), (2, 20), (2, 5), (3, 100), (3, 115), (3, 120)]
+car_List = [(1, 10), (1, 20), (1, 30), (2, 30), (2, 20), (2, 35), (3, 100), (3, 115), (3, 120)]
 
 previous_centroids = {}  # 直前のcentroidsを保持する辞書
 objectID_count = {}  # objectIDごとのカウントを保持する辞書
@@ -21,7 +21,7 @@ for car in car_List:
             # delet entries with the same objectID
             if objectID in objectID_count:
                 del objectID_count[objectID]
-            # # ???????????
+
             if objectID in objectID_count:
                 if state in objectID_count[objectID]:
                     objectID_count[objectID][state] += 1
