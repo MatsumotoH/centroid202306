@@ -7,28 +7,28 @@ centroids_dic = {}  # centroidsと現在時間を保持する辞書
 objectID_count = {}  # objectIDごとのカウントを保持する辞書
 OUT_count = 0
 IN_count = 0
+previous_time = None
+
 for car in car_List:
     objectID, centroids = car
 
     if objectID not in previous_centroids:
-        previous_centroids[objectID] = centroids  # 最初のcentroidsを保存
-        #現在時刻をobjectIDとcentroidsとともに保存
-        # centroids_dic[objectID] = {"centroids": centroids, "time": 0}
-
+        current_time = time.time()
+        if previous_time is None or current_time - previous_time >= 1:
+            previous_centroids[objectID] = centroids
+            previous_time = current_time
     else:
         if objectID in previous_centroids:
             difference = centroids - previous_centroids[objectID]
-            # previous_centroids[objectID] = centroids  # 直近のcentroidsを更新
 
             if difference > 0:
                 state = "IN"
             else:
                 state = "OUT"
 
-            # delet entries with the same objectID
             if objectID in objectID_count:
                 del objectID_count[objectID]
-            # # ???????????
+
             if objectID in objectID_count:
                 if state in objectID_count[objectID]:
                     objectID_count[objectID][state] += 1
@@ -37,12 +37,10 @@ for car in car_List:
             else:
                 objectID_count[objectID] = {"IN": 0, "OUT": 0}
                 objectID_count[objectID][state] = 1
-                
+
             IN_count = 0
             OUT_count = 0
 
             for objectID in objectID_count:
-              IN_count += objectID_count[objectID]["IN"]
-              OUT_count += objectID_count[objectID]["OUT"]
-
-              current_time = time.time()
+                IN_count += objectID_count[objectID]["IN"]
+                OUT_count += objectID_count[objectID]["OUT"]
