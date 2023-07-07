@@ -109,7 +109,7 @@ class CentroidTracker():
                 currentCentroid = self.objects[objectID]
                 inputCentroid = inputCentroids[col]
                 
-                if abs(currentCentroid[col][0] - inputCentroid[0]) <= 500:
+                if abs(currentCentroid[0] - inputCentroid[0]) <= 2000:
                     self.objects[objectID] = inputCentroid
                     self.disappeared[objectID] = 0
                     # indicate that we have examined each of the row and

@@ -109,14 +109,14 @@ class CentroidTracker():
                 currentCentroid = self.objects[objectID]
                 inputCentroid = inputCentroids[col]
                 
-                if abs(currentCentroid[col][0] - inputCentroid[0]) <= 500:
+                if abs(currentCentroid[0] - inputCentroid[0]) <= 200:
                     self.objects[objectID] = inputCentroid
                     self.disappeared[objectID] = 0
                     # indicate that we have examined each of the row and
                     # column indexes, respectively
                 #!inputCentroid[0]>1000　　delete inputcentroid[0]
-                # if inputCentroid[0]>1000:
-                    # self.deregister(objectID)                
+                if inputCentroid[0]>1000:
+                    self.deregister(objectID)                
                     usedRows.add(row)
                     usedCols.add(col)
             # compute both the row and column index we have NOT yet
